@@ -14,18 +14,13 @@ class News {
             if (idx % 2) newsClone.querySelector('.news__item')?.classList.add('alt');
 
             const photo = newsClone.querySelector('.news__meta-photo') as HTMLElement;
-            photo.style.backgroundImage = `url(${item.urlToImage || 'img/news_placeholder.jpg'
-                })`;
+            photo.style.backgroundImage = `url(${item.urlToImage || 'img/news_placeholder.jpg'})`;
 
             const author = newsClone.querySelector('.news__meta-author') as HTMLElement;
             author.textContent = item.author || item.source.name;
 
             const date = newsClone.querySelector('.news__meta-date') as HTMLElement;
-            date.textContent = item.publishedAt
-                .slice(0, 10)
-                .split('-')
-                .reverse()
-                .join('-');
+            date.textContent = item.publishedAt.slice(0, 10).split('-').reverse().join('-');
 
             const title = newsClone.querySelector('.news__description-title') as HTMLElement;
             title.textContent = item.title;
@@ -43,8 +38,8 @@ class News {
         });
 
         const newsContainer = document.querySelector('.news') as HTMLElement;
-         newsContainer.innerHTML = '';
-         newsContainer.appendChild(fragment);
+        newsContainer.innerHTML = '';
+        newsContainer.appendChild(fragment);
     }
 }
 

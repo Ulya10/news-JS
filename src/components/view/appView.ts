@@ -3,7 +3,6 @@ import Sources from './sources/sources';
 import { Article, NewsResponse } from '../../types/news';
 import { Source, SourcesResponse } from '../../types/sources';
 
-
 export class AppView {
     private news: News;
     private sources: Sources;
@@ -19,7 +18,7 @@ export class AppView {
     }
 
     drawSources(data: SourcesResponse): void {
-        const values: Source[]  = data?.sources ? data?.sources : [];
+        const values: Source[] = data?.sources ? data?.sources : [];
         this.sources.draw(values);
     }
 }

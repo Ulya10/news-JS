@@ -1,7 +1,6 @@
 type RequestOptions = Record<string, string | number>;
 
 class Loader {
-
     private baseLink: string;
     private options: RequestOptions;
 
@@ -14,7 +13,7 @@ class Loader {
         { endpoint, options = {} }: { endpoint: string; options?: RequestOptions },
         callback: (data: T) => void = () => {
             console.error('No callback for GET response');
-        },
+        }
     ): void {
         this.load<T>('GET', endpoint, callback, options);
     }
@@ -40,10 +39,7 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    private load<T>(method: string,
-        endpoint: string,
-        callback: (data: T) => void,
-        options: RequestOptions = {},) : void {
+    private load<T>(method: string, endpoint: string, callback: (data: T) => void, options: RequestOptions = {}): void {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res: Response) => res.json() as Promise<unknown>)

@@ -4,15 +4,12 @@ import { SourcesResponse } from '../../types/sources';
 
 class AppController extends AppLoader {
     getSources(callback: (data: SourcesResponse) => void): void {
-        super.getResp<SourcesResponse>(
-            { endpoint: 'sources' },
-            callback,
-        );
+        super.getResp<SourcesResponse>({ endpoint: 'mocks/sources' }, callback);
     }
 
     public getNews(e: MouseEvent, callback: (data: NewsResponse) => void): void {
         let target = e.target as HTMLElement;
-        const newsContainer = e.currentTarget as HTMLElement;;
+        const newsContainer = e.currentTarget as HTMLElement;
 
         while (target !== newsContainer) {
             if (target.classList.contains('source__item')) {
@@ -26,7 +23,7 @@ class AppController extends AppLoader {
                     newsContainer.setAttribute('data-source', sourceId);
                     super.getResp<NewsResponse>(
                         {
-                            endpoint: 'everything',
+                            endpoint: 'mocks/everything',
                             options: {
                                 sources: sourceId,
                             },
