@@ -1,4 +1,5 @@
 import Loader from './loader';
+import { ReadonlyConfig } from '../../types/utility';
 
 class AppLoader extends Loader {
     constructor() {
@@ -9,7 +10,12 @@ class AppLoader extends Loader {
             throw new Error('API_URL and API_KEY must be defined in .env');
         }
 
-        super(apiUrl, { apiKey });
+        const config: ReadonlyConfig = {
+            apiUrl,
+            apiKey,
+        };
+
+        super(config.apiUrl, { apiKey: config.apiKey });
     }
 }
 

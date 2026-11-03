@@ -1,10 +1,11 @@
 import AppLoader from './appLoader';
 import { NewsResponse } from '../../types/news';
 import { SourcesResponse } from '../../types/sources';
+import { Endpoint } from '../../types/endpoints';
 
 class AppController extends AppLoader {
     getSources(callback: (data: SourcesResponse) => void): void {
-        super.getResp<SourcesResponse>({ endpoint: 'mocks/sources' }, callback);
+        super.getResp<SourcesResponse>({ endpoint: Endpoint.MockSources }, callback);
     }
 
     public getNews(e: MouseEvent, callback: (data: NewsResponse) => void): void {
@@ -23,7 +24,7 @@ class AppController extends AppLoader {
                     newsContainer.setAttribute('data-source', sourceId);
                     super.getResp<NewsResponse>(
                         {
-                            endpoint: 'mocks/everything',
+                            endpoint: Endpoint.MockEverything,
                             options: {
                                 sources: sourceId,
                             },
